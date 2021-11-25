@@ -1,11 +1,15 @@
 #include <stdio.h>
 
-int binarySearch(int a[], int x, int n) {
+int binarySearch(int a[], int x, int n)
+{
 
     // Bubble Sort
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (a[j] > a[j + 1]) {
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (a[j] > a[j + 1])
+            {
                 int temp = a[j];
                 a[j] = a[j + 1];
                 a[j + 1] = temp;
@@ -15,14 +19,19 @@ int binarySearch(int a[], int x, int n) {
 
     // Binary Search
     int low = 0, high = n - 1, mid;
-    while (low <= high) {
+    while (low <= high)
+    {
         mid = (low + high) / 2;
-        if (a[mid] == x) {
+        if (a[mid] == x)
+        {
             return mid;
         }
-        if (a[mid] > x) {
+        if (a[mid] > x)
+        {
             high = mid - 1;
-        } else {
+        }
+        else
+        {
             low = mid + 1;
         }
     }
@@ -31,16 +40,31 @@ int binarySearch(int a[], int x, int n) {
 
 int main()
 {
-    int a[6] = {1, 3, 5, 6, 2, 7};
-    int x, n = 6;
+    int x, n;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int a[n];
+
+    printf("Enter the elements: ");
+
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &a[i]);
+    }
+
     printf("Enter a number to be found: ");
     scanf("%d", &x);
 
     int ans = binarySearch(a, x, n);
 
-    if (ans == -1) {
+    if (ans == -1)
+    {
         printf("Element not found!");
-    } else {
+    }
+    else
+    {
         printf("Element found at index %d", ans);
     }
 

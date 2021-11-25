@@ -1,18 +1,23 @@
 #include <stdio.h>
 
-void bubbleSort(int a[], int n)
+void selectionSort(int a[], int n)
 {
-    // Bubble Sort
     for (int i = 0; i < n - 1; i++)
     {
-        for (int j = 0; j < n - i - 1; j++)
+        int min = i;
+        for (int j = i + 1; j < n; j++)
         {
-            if (a[j] > a[j + 1])
+            if (a[j] < a[min])
             {
-                int temp = a[j];
-                a[j] = a[j + 1];
-                a[j + 1] = temp;
+                min = j;
             }
+        }
+
+        if (min != i)
+        {
+            int temp = a[min];
+            a[min] = a[i];
+            a[i] = temp;
         }
     }
 }
@@ -33,9 +38,9 @@ int main()
         scanf("%d", &a[i]);
     }
 
-    bubbleSort(a, n);
+    selectionSort(a, n);
 
-    printf("Sorted array: ");
+    printf("Sorted array(Selection Sort): ");
 
     for (int i = 0; i < n; i++)
     {
