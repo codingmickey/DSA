@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-int count = 0;
-
 // Pranit Sir's method with i and j starting from the start
 int partition(int a[], int start, int end)
 {
@@ -18,7 +16,6 @@ int partition(int a[], int start, int end)
             j++;
         }
         i++;
-        count++;
     }
     int temp = a[j];
     a[j] = a[pivot];
@@ -62,7 +59,6 @@ int main()
     {
         printf("%d ", a[i]);
     }
-    printf("The final count is %d", count);
 
     return 0;
 }
