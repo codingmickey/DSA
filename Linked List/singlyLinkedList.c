@@ -7,15 +7,14 @@ struct Node
     struct Node *next;
 };
 
-struct Node *start = NULL;
-struct Node *temp;
+struct Node *start, *temp;
 
 void create()
 {
     struct Node *newnode;
 
     int n;
-    printf("Enter the number of nodes to insert: ");
+    printf("Enter the number of nodes to create: ");
     scanf("%d", &n);
 
     for (int i = 0; i < n; i++)
@@ -43,11 +42,17 @@ void create()
 
 void display()
 {
-    temp = start;
 
+    if (start == NULL)
+    {
+        printf("Linkedlist is empty!\n");
+        return;
+    }
+
+    temp = start;
     while (temp != NULL)
     {
-        printf(" -> %d", temp->data);
+        printf("%d ", temp->data);
         temp = temp->next;
     }
     printf("\n");
@@ -133,7 +138,6 @@ void delete1()
     scanf("%d", &x);
 
     temp = start;
-    prev = start;
 
     while (temp != NULL && temp->data != x)
     {
@@ -143,7 +147,7 @@ void delete1()
 
     if (temp == NULL)
     {
-        printf("Value not found!");
+        printf("Value not found!\n");
         return;
     }
     else if (temp == start)
@@ -194,9 +198,12 @@ int main()
         case 5:
             delete1();
             break;
+        case 6:
+            printf("Bye..\n");
+            break;
 
         default:
-            printf("Enter a correct option!!");
+            printf("Enter a correct option!!\n");
             break;
         }
     } while (check != 6);
