@@ -3,17 +3,18 @@
 
 struct Node
 {
-    int data;
-    struct Node *next;
+    int data;          // 4
+    struct Node *next; // 32 - 4
+    // 64 - 8
 };
 
 struct Node *start, *temp;
 
 void create()
 {
+    int n;
     struct Node *newnode;
 
-    int n;
     printf("Enter the number of nodes to create: ");
     scanf("%d", &n);
 
@@ -52,10 +53,10 @@ void display()
     temp = start;
     while (temp != NULL)
     {
-        printf("%d ", temp->data);
+        printf("\n%p\t%d", temp, temp->data);
         temp = temp->next;
     }
-    printf("\n");
+    printf("\n%ld %ld %ld\n", sizeof(struct Node), sizeof(int), sizeof(struct Node *));
 }
 
 void insert_after()

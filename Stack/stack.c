@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define max_size 5
+#define MAX_SIZE 5
 
-int stack[max_size];
+int stack[MAX_SIZE];
 int top = -1;
 
 void push(int value)
 {
-    if (top == max_size - 1)
+    if (top == MAX_SIZE - 1)
     {
         printf("Stack overflow(Stack is full)\nElement %d could not be inserted :(\n", value);
     }
@@ -39,7 +39,7 @@ int pop()
 
 bool isFull()
 {
-    if (top == max_size - 1)
+    if (top == MAX_SIZE - 1)
     {
         return true;
     }
