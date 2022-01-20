@@ -90,8 +90,6 @@ void insert_after()
 
 void insert_before()
 {
-    printf("Data in the nodes are: \n");
-    display();
 
     struct Node *newnode, *prev;
     int x, val;
@@ -122,9 +120,6 @@ void insert_before()
         prev->next = newnode;
         newnode->next = temp;
     }
-
-    printf("Data in the nodes after inserting %d before %d is: \n", val, x);
-    display();
 }
 
 void delete1()
