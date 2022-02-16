@@ -63,13 +63,10 @@ void deleteNode(int val)
             temp = temp->right;
         }
     }
-    printf("Almost complete");
     if (temp != NULL)
     {
-        printf("Value found!");
         if (temp->right == NULL && temp->left == NULL)
         {
-            printf("Leaf node deleted!");
             if (par->right == temp)
                 par->right = NULL;
             else
@@ -79,7 +76,6 @@ void deleteNode(int val)
         }
         else if (temp->right == NULL)
         {
-            printf("right node is NULL!");
             temp->data = temp->left->data;
             temp->right = temp->left->right;
             temp->left = temp->left->left;
@@ -87,7 +83,6 @@ void deleteNode(int val)
         }
         else if (temp->left == NULL)
         {
-            printf("left node is NULL!");
             temp->data = temp->right->data;
             temp->left = temp->right->left;
             temp->right = temp->right->right;
