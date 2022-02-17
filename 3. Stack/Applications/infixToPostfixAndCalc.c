@@ -5,6 +5,7 @@
 #define MAX_SIZE 100
 
 char stack[MAX_SIZE];
+int calcS[MAX_SIZE];
 int top = -1;
 
 void push(char x)
@@ -26,6 +27,30 @@ char pop()
         return 0;
     }
     char temp = stack[top];
+    stack[top] = 0;
+    top--;
+    return temp;
+}
+
+void pushi(int x)
+{
+    if (top == MAX_SIZE - 1)
+    {
+        printf("The stack is full, STACK OVERFLOW\n");
+        return;
+    }
+    top++;
+    stack[top] = x;
+}
+
+int popi()
+{
+    if (top == -1)
+    {
+        printf("The stack is empty, STACK UNDERFLOW\n");
+        return 0;
+    }
+    int temp = stack[top];
     stack[top] = 0;
     top--;
     return temp;
@@ -53,6 +78,43 @@ int priority(char a)
     default:
         break;
     }
+}
+
+int calc(char postfix[], int len)
+{
+    for (int i = 0; i < len; i++)
+    {
+        printf("\ni:%c", postfix[i]);
+        if (postfix[i] == '+' || postfix[i] == '-' || postfix[i] == '*' || postfix[i] == '/')
+        {
+            int op1 = popi();
+            int op2 = popi();
+            printf("\nop1:%d\top2:%d\n", op1, op2);
+            int ans;
+            switch (postfix[i])
+            {
+            case '+':
+                ans = op2 + op1;
+                break;
+            case '-':
+                ans = op2 - op1;
+                break;
+            case '*':
+                ans = op2 * op1;
+                break;
+            case '/':
+                ans = op2 / op1;
+                break;
+            }
+            push(ans);
+        }
+        else
+        {
+            pushi(postfix[i] - '0');
+        }
+    }
+
+    return pop();
 }
 
 int main()
@@ -120,7 +182,7 @@ int main()
         printf("%c", postfix[i]);
         i++;
     }
-    printf("\n");
+    printf("\n\nThe value of the expression is %d", calc(postfix, temp));
 
     return 0;
 }
