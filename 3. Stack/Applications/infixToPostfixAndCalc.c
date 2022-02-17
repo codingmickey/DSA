@@ -40,7 +40,7 @@ void pushi(int x)
         return;
     }
     top++;
-    stack[top] = x;
+    calcS[top] = x;
 }
 
 int popi()
@@ -50,8 +50,8 @@ int popi()
         printf("The stack is empty, STACK UNDERFLOW\n");
         return 0;
     }
-    int temp = stack[top];
-    stack[top] = 0;
+    int temp = calcS[top];
+    calcS[top] = 0;
     top--;
     return temp;
 }
@@ -84,12 +84,10 @@ int calc(char postfix[], int len)
 {
     for (int i = 0; i < len; i++)
     {
-        printf("\ni:%c", postfix[i]);
         if (postfix[i] == '+' || postfix[i] == '-' || postfix[i] == '*' || postfix[i] == '/')
         {
             int op1 = popi();
             int op2 = popi();
-            printf("\nop1:%d\top2:%d\n", op1, op2);
             int ans;
             switch (postfix[i])
             {
@@ -106,7 +104,7 @@ int calc(char postfix[], int len)
                 ans = op2 / op1;
                 break;
             }
-            push(ans);
+            pushi(ans);
         }
         else
         {
@@ -114,7 +112,7 @@ int calc(char postfix[], int len)
         }
     }
 
-    return pop();
+    return popi();
 }
 
 int main()
