@@ -61,9 +61,6 @@ void display()
 
 void insert_after()
 {
-    printf("Data in the nodes are: \n");
-    display();
-
     struct Node *newnode;
     int x, val;
 
@@ -83,14 +80,10 @@ void insert_after()
     }
     newnode->next = temp->next;
     temp->next = newnode;
-
-    printf("Data in the nodes after inserting %d after %d is: \n", val, x);
-    display();
 }
 
 void insert_before()
 {
-
     struct Node *newnode, *prev;
     int x, val;
 
@@ -124,9 +117,6 @@ void insert_before()
 
 void delete1()
 {
-    printf("Data in the nodes are: \n");
-    display();
-
     struct Node *prev;
     int x;
 
@@ -156,9 +146,6 @@ void delete1()
         prev->next = temp->next;
         free(temp);
     }
-
-    printf("Data in the nodes after deleting %d is: \n", x);
-    display();
 }
 
 int main()
