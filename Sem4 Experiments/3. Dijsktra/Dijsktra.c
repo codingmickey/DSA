@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+#define MIN(x, y) (((x < y) ? x : y))
+
 int main()
 {
     int n = 6;
@@ -46,7 +48,8 @@ int main()
         vis[min] = 1;
         for (int j = 0; j < 6; j++)
         {
-            d[j] = (d[j] < d[min] + cost[min][j]) ? d[j] : (d[min] + cost[min][j]);
+            // d[j] = (d[j] < d[min] + cost[min][j]) ? d[j] : (d[min] + cost[min][j]);
+            d[j] = MIN(d[j], (d[min] + cost[min][j]));
         }
         for (int j = 0; j < n; j++)
         {
